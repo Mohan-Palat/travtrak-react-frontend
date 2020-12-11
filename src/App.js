@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import UserInfo from './UserInfo.js';
+import Header from './Header'
+import TrekContainer from './TrekContainer'
+import { Icon, Button } from 'semantic-ui-react';
+import FlagBanner from './FlagBanner.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  render() {
+
+    return (
+      <>
+        <Header />
+        <UserInfo />
+        <FlagBanner />
+        <br></br>
+        <br></br>
+        <br></br>
+        <h3>Treks</h3><Button icon>Add Trek <Icon name='add'/></Button>
+        <TrekContainer />
+      </>
+    );
+  }
 }
 
 export default App;

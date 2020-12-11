@@ -1,13 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Dosis', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #eff7fa;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#profile-pic {
+  height: 125px;
+  width: 125px;
+  border-radius: 100%;
+  box-shadow: 10px 10px 5px #cccccc;
+}
+
+#header-username {
+  font-size: 35px;
+  text-shadow: 2px 2px 5px #fadadd;
+}
+
+#logo {
+  font-family: 'Lobster', cursive;
+  margin-left: 10%;
+  text-shadow: 2px 2px 5px #ec8080;
+}
+
+#user-flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#search-bar-flex-container {
+  display: flex;
+}
+
+#search-bar {
+  text-align: center;
+}
+
+#trek-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.trek-list {
+  margin-left: 10%;
+}
+
+.button {
+  background: #223a5e;
+  color: #FFFFFF;
+  box-shadow: 2px 3px 5px #fadadd;
+}
+
+#flex-header-container{
+  display: flex;
+  justify-content: space-between;
+  background-color: #fadadd;
+}
+
+#logout-button{
+  margin-top: 3%;
+  margin-right: 10%;
+}
+
+#add_button {
+  margin-left: 10%;
+}
+
+#list-flex-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#plus {
+  color: black;
+  font-size: 30px;
+}
+
+#flex-logo-container{
+  display:flex;
+}
+
+#flex-button-container {
+  display:flex;
+}
+
+.button {
+  background: yellow;
+}
+
+#flag-banner {
+  text-align: center;
 }
