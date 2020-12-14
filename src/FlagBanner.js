@@ -9,7 +9,7 @@ class FlagBanner extends Component {
             <>
                 <br></br>
                 <div id="flag-banner">🇮🇪 🇪🇸 🇲🇽 🇩🇪 🇫🇷 🇨🇭 🇳🇱 🇬🇧 🇨🇦 🇺🇸 🇲🇽 🇯🇵 🇨🇳</div>
-                <Button icon><Icon name='add'/></Button>
+                <Button>Add/Update Flags</Button>
             </>
         );
     }

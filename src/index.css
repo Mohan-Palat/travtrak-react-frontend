@@ -1,12 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Bebas Neue', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #eff7fa;
+}
+
+body {
+	background: linear-gradient(-45deg, #fdf0f2, #fadadd, #f7c4c8, #f4adb4);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 code {
@@ -15,14 +33,14 @@ code {
 }
 
 #profile-pic {
-  height: 125px;
-  width: 125px;
+  height: 200px;
+  width: 200px;
   border-radius: 100%;
   box-shadow: 10px 10px 5px #cccccc;
 }
 
 #header-username {
-  font-size: 35px;
+  font-size: 40px;
   text-shadow: 2px 2px 5px #fadadd;
 }
 
@@ -30,6 +48,7 @@ code {
   font-family: 'Lobster', cursive;
   margin-left: 10%;
   text-shadow: 2px 2px 5px #ec8080;
+  font-size: 50px;
 }
 
 #user-flex-container {
@@ -65,7 +84,6 @@ code {
 #flex-header-container{
   display: flex;
   justify-content: space-between;
-  background-color: #fadadd;
 }
 
 #logout-button{
@@ -95,10 +113,35 @@ code {
   display:flex;
 }
 
-.button {
-  background: yellow;
-}
 
 #flag-banner {
   text-align: center;
+  font-size: 40px;
+}
+
+#link{
+  color: black;
+}
+
+#dropdown-box {
+  width: 250px;
+  text-align: center;
+}
+
+#flex-search-country-container{
+
+  display:flex;
+  justify-content: center;
+  margin-top: 7%;
+
+}
+
+#travel-info {
+  text-align: center;
+}
+
+#country-header {
+
+  font-size: 45px;
+  margin-top: 5%;
 }
