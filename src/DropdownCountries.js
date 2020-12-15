@@ -3,11 +3,12 @@ import { Dropdown } from 'semantic-ui-react'
 
 class DropdownCountries extends Component {
 
-  constructor(props) {
+  constructor(props) {z
     super(props);
 
     this.state = {
       searchValue : '',
+      
     }
   }
 

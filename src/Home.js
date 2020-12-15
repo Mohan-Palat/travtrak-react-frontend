@@ -26,7 +26,7 @@ class Home extends Component {
                 onClick={this.handleClick}
             >
                 <Icon name='dropdown' />
-                Inspiration Board
+                Travel Planner
             </Accordion.Title>
             <Accordion.Content active={activeIndex === 0}>
                 <p>

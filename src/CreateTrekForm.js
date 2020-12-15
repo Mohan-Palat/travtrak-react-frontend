@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import { Button, Form, Segment, Label, Image, Modal, Icon } from 'semantic-ui-react'
+import { Button, Form, Segment, Label, Radio, Image, Modal, Icon } from 'semantic-ui-react'
 import axios from 'axios';
-import {Link, } from 'react-router-dom'
+import {Link} from 'react-router-dom'
+
 
 
 class CreateTrekForm extends Component {
@@ -9,7 +10,9 @@ class CreateTrekForm extends Component {
     trip_name: '',
     date: '',
     image_url: '',
-    designation:''
+    designation:'',
+    airline: '',
+    confirmation_code:''
   };
 
   handleChange = (e) => {
@@ -60,7 +63,8 @@ class CreateTrekForm extends Component {
             <Form
             onSubmit={(e) => {
                 this.addTreks(e, this.state);
-                this.setState({ trip_name: '', date: '', image_url: '', designation: ''});
+                this.setState({ trip_name: '', date: '', image_url: '', designation: '',  airline: '', confirmation_code:''});
+                console.log(e);
             }}
             >
             <Label>Trip Name:</Label>
@@ -72,11 +76,12 @@ class CreateTrekForm extends Component {
             />
             <Label>Date:</Label>
             <Form.Input
-                type="text"
+                type="date"
                 name="date"
                 value={this.state.date}
                 onChange={this.handleChange}
             />
+            
             <Label>Image URL:</Label>
             <Form.Input
                 type="text"
@@ -84,13 +89,27 @@ class CreateTrekForm extends Component {
                 value={this.state.image_url}
                 onChange={this.handleChange}
             />
-            <Label>Designation:</Label>
+
+            <Radio label='this trip is booked' />
+
+            <h4> Flight Info </h4>
+            <Label>Airline</Label>
             <Form.Input
                 type="text"
-                name="designation"
-                value={this.state.designation}
+                name="airline"
+                value={this.state.airline}
+                onChange={this.handleChange}
+            />            
+            <Label>Flight Confirmation</Label>
+            <Form.Input
+                type="text"
+                name="confirmation_code"
+                value={this.state.confirmation_code}
                 onChange={this.handleChange}
             />
+            
+            <br></br>
+            <br></br>
             <Button type="Submit" onClick={this.setRedirect}>Create Trek</Button>
             </Form>
         </Segment>

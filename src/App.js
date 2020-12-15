@@ -11,6 +11,7 @@ import LandingPage from './LandingPage'
 import Safety from './Safety'
 import Home from './Home'
 
+
 class App extends Component {
 
   render() {
@@ -24,7 +25,6 @@ class App extends Component {
           <Route path ='/board' component = {TrekContainer} exact/>
           <Route path ='/safety' component = {Safety} exact/>
           <Route path ='/add' component = {CreateTrekForm} />
-          <Route path = '/details' component = {TrekDetail} />
         </>
       </Switch>
     );

@@ -3,6 +3,10 @@ import axios from 'axios';
 import TrekList from './TrekList';
 import { Card, Image, Icon, Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
+import AddModal from './MoreInfoModal'
+import TrekDetail from './TrekDetail'
+import EditTrekModal from './EditTrekModal';
+
 
 class TrekContainer extends Component {
   constructor(props) {
@@ -10,9 +14,24 @@ class TrekContainer extends Component {
 
     this.state = {
       treks: [],
-      trekID: ''
+      trekID: '',
+      trek: '',
+      airline: '',
+      confirmation_code:'',
+      date: '',
+      trekToEdit: {
+        id: '',
+        trek: '',
+        airline: '',
+        confirmation_code: '',
+        date: ''
+      },
+      showEditModal: false
     }
   }
+
+
+
   componentDidMount() {
     this.getTreks();
   }
@@ -69,21 +88,99 @@ class TrekContainer extends Component {
   };
 
   handleTrekDetails = async (id) => {
-    console.log(id);
-    this.setState({ 
-      treks: id, 
-    });
-  }
+    
+    
+      try {
+        const detailTrek = await axios(
+          process.env.REACT_APP_FLASK_API_URL + `/api/v1/treks/${id}`
+        );
+        await this.setState({
+          trekID: id,
+          trek: detailTrek.data.data[0].trip_name,
+          airline: detailTrek.data.data[0].airline,
+          confirmation_code:detailTrek.data.data[0].confirmation_code,
+          date: detailTrek.data.data[0].date
+        });
 
+        console.log(this.state.trekID);
+        console.log(detailTrek.data.data[0].date);
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    openAndEdit = (trekFromTheList) => {
+      console.log(trekFromTheList, ' trekToEdit  ');
+    
+      this.setState({
+        trekID: trekFromTheList,
+        showEditModal: true,
+        trekToEdit: {
+          ...trekFromTheList,
+        },
+      });
+    };
+
+    handleEditChange = (e) => {
+
+      const treksEdited = {...this.state.trekToEdit}
+      
+      treksEdited[e.currentTarget.name] = e.currentTarget.value
+      
+      this.setState({
+        trekToEdit: treksEdited
+      });
+    };
+
+
+closeAndEdit = async (e) => {
+  e.preventDefault();
+  try {
+    const editResponse = await axios.put(
+      process.env.REACT_APP_FLASK_API_URL +
+        '/api/v1/treks/' +
+        this.state.trekID,
+      this.state.trekToEdit
+    );
+
+    console.log(editResponse, ' parsed edit');
+    console.log(this.state.trekToEdit.trekID);
+    const newTrekArrayWithEdit = this.state.treks.map((trek) => {
+      if (trek.id === editResponse.data.data.id) {
+        trek = editResponse.data.data;
+      }
+
+      return trek;
+    });
+
+    this.setState({
+      showEditModal: false,
+      treks: newTrekArrayWithEdit,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+closeModal = () => {
+  this.setState({ showModal: false })
+}
 
   render() {
+    console.log(this.state.trek);
       return (
         <>
           <h1>Treks</h1>
           <Button><Link to='/add' id="link">Add New Trek</Link></Button>
+          <AddModal />
           <br></br>
-          <TrekList treks={this.state.treks} deleteTrek={this.deleteTrek} handleTrekDetails={this.handleTrekDetails}/>
+          <TrekList openAndEdit={this.openAndEdit} treks={this.state.treks} deleteTrek={this.deleteTrek} handleTrekDetails={this.handleTrekDetails}/>
           <br></br>
+          {(this.state.trek !== '') ? <h2 id='trek-details'>Trek Details</h2>: <h2></h2>}
+          <TrekDetail date ={this.state.date} trek={this.state.trek} airline={this.state.airline} confirmation_code={this.state.confirmation_code}/>
+          <EditTrekModal closeModal={this.closeModal} handleEditChange={this.handleEditChange} open={this.state.showEditModal} trekToEdit={this.state.trekToEdit} closeAndEdit={this.closeAndEdit}/>
+
         </>
       )
     
