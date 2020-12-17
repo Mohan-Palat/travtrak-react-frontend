@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import AddModal from './MoreInfoModal'
 import TrekDetail from './TrekDetail'
 import EditTrekModal from './EditTrekModal';
-
+import NewUserModal from './Login';
 
 class TrekContainer extends Component {
   constructor(props) {
@@ -26,7 +26,14 @@ class TrekContainer extends Component {
         confirmation_code: '',
         date: ''
       },
-      showEditModal: false
+      showEditModal: false,
+      showNewUserModal: false,
+      newUser: {
+        username: '',
+        email: '',
+        password: '',
+      },
+      currentUser: {},
     }
   }
 
@@ -75,15 +82,15 @@ class TrekContainer extends Component {
   };
 
   deleteTrek = async (id) => {
-    console.log(id);
+    console.log(id.id);
     const deleteTrekResponse = await axios.delete(
-      `${process.env.REACT_APP_FLASK_API_URL}/api/v1/treks/${id}`
+      `${process.env.REACT_APP_FLASK_API_URL}/api/v1/treks/${id.id}`
     );
     console.log(deleteTrekResponse);
     // Now that the db has deleted our item, we need to remove it from state
     // Then make the delete request, then remove the trek from the state array using filter
     this.setState({ 
-      treks: this.state.treks.filter((trek) => trek.id !== id), 
+      treks: this.state.treks.filter((trek) => trek.id !== id.id), 
     });
   };
 
@@ -171,16 +178,15 @@ closeModal = () => {
     console.log(this.state.trek);
       return (
         <>
-          <h1>Treks</h1>
+          <h1 id='center-header'>Treks</h1>
           <Button><Link to='/add' id="link">Add New Trek</Link></Button>
           <AddModal />
           <br></br>
           <TrekList openAndEdit={this.openAndEdit} treks={this.state.treks} deleteTrek={this.deleteTrek} handleTrekDetails={this.handleTrekDetails}/>
           <br></br>
-          {(this.state.trek !== '') ? <h2 id='trek-details'>Trek Details</h2>: <h2></h2>}
+          {(this.state.trek !== '') ? <h2 id='trek-details-1'>Trek Details</h2>: <h2></h2>}
           <TrekDetail date ={this.state.date} trek={this.state.trek} airline={this.state.airline} confirmation_code={this.state.confirmation_code}/>
           <EditTrekModal closeModal={this.closeModal} handleEditChange={this.handleEditChange} open={this.state.showEditModal} trekToEdit={this.state.trekToEdit} closeAndEdit={this.closeAndEdit}/>
-
         </>
       )
     

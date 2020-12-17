@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card, Image, Button } from 'semantic-ui-react';
+import { Card, Image, Button, Icon } from 'semantic-ui-react';
 
 class TrekList extends Component {
   constructor(props) {
@@ -23,10 +23,11 @@ class TrekList extends Component {
         </Card.Content>
         <Card.Content extra>
             <Card.Description>{trek.designation}</Card.Description>
-            
             <Button onClick={() => this.props.handleTrekDetails(trek.id)}>Details</Button>
-            <Button onClick={() => this.props.openAndEdit(trek.id)}>Edit</Button>
-            <Button onClick={() => this.props.deleteTrek(trek)}>Delete</Button>
+            <Button icon onClick={() => this.props.deleteTrek(trek)}><Icon name="trash"/></Button>
+           <br></br>
+           <br></br>
+            <Button onClick={() => this.props.openAndEdit(trek.id)}>Additional Info</Button>
         </Card.Content>
       </Card>
     );

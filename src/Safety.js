@@ -36,13 +36,23 @@ class Safety extends Component {
     render() {
         return (
             <div>
+                <h2 id="safety-info">Use the dropdown below to search a country and the travel advisory <br></br>
+                associated to it. You will find additional information on the rating and warning at the bottom of <br></br>
+                the response. Note that the COVID-19 pandemic has caused many travel advisories. No matter where <br></br>
+                travel with caution and practice social disrancing guidelines.</h2>
                 <SearchCountry handleCountrySearch={this.handleCountrySearch}/>
                  <div id="travel-info">
                     <h1 id='country-header'>{this.state.country}</h1>
-                    {(this.state.country !== '') ? <h2>{this.state.score}/5</h2>: <h2></h2>}
-                    <h1>{this.state.status}</h1>
-                    {(this.state.country !== '') ? <h2>{this.state.covidCases} Covid Cases</h2>: <h2></h2>}
-                    {(this.state.country !== '') ? <h2>{this.state.covidDeaths} Covid Deaths</h2>: <h2></h2>}
+                    
+                    {(this.state.country !== '') ? <h2>Rating: {this.state.score}/5</h2>: <h2></h2>}
+                    {(this.state.status !== '') ? <h1>{this.state.status}</h1>: <h2></h2>}
+                    <br></br>
+                    <br></br>
+                    <div id="flex-covid-container">
+                    {(this.state.country !== '') ? <div class='covid-cases'><h2>{this.state.covidCases} Covid Cases</h2></div>: <h2></h2>}
+                    {(this.state.country !== '') ? <div class='covid-cases'><h2>{this.state.covidDeaths} Covid Deaths</h2></div>: <h2></h2>}
+                    </div>
+                    <br></br>
                     {(this.state.country !== '') ? <p>Additional information: <a href={this.state.link} target="_blank">{this.state.link}</a></p>: <p></p>}
                     
                 </div>

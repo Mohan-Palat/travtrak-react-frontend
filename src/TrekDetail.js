@@ -14,13 +14,16 @@ class TrekDetail extends Component {
     
         
         return (
+
+            
             <div id='trek-details'>
-                <h2>{this.props.trek}</h2>
-                {(this.props.date !== '') ? <h3> Date: {this.props.date}</h3>: <h2></h2>}
-                {(this.props.airline !== '') ? <h4>Airline:{this.props.airline}</h4>: <h2></h2>}
-                {(this.props.confirmation_code !== '') ? <h4>Confirmation Code: {this.props.confirmation_code}</h4>: <h2></h2>}
-                
-                
+                {(this.props.trek !== '') ? <h2 id="trek-detail-header">{this.props.trek}</h2>: <h2></h2>}
+                {(this.props.date !== '') ? <h3 class='detail-granular'> Date: {this.props.date}</h3>: <h2></h2>}
+                {(this.props.airline !== '') ? <h4 class='detail-granular'>Airline:{this.props.airline}</h4>: <h2></h2>}
+                {(this.props.confirmation_code !== '') ? <h4 class='detail-granular'>Confirmation Code: {this.props.confirmation_code}</h4>: <h2></h2>}
+                {(this.props.trek !== '') ? <br></br> : <h2></h2>}
+                {(this.props.trek !== '') ? <br></br> : <h2></h2>}
+                {(this.props.trek !== '') ? <br></br> : <h2></h2>}
             </div>
         );
     }

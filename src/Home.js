@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Accordion, Icon } from 'semantic-ui-react';
+import Login from './Login'
 
 class Home extends Component {
     state = { activeIndex: 0 }
@@ -17,9 +18,9 @@ class Home extends Component {
   
       return (
         <>
-            <h1>Welcome to TravTrak</h1>
-            <h4>Breakdown of Site:</h4>
-            <Accordion fluid styled>
+            <h1 id='center-header'>Welcome to TravTrak</h1>
+            <h3 id='center-header'>TravTrak is here to help organize your upcoming travel and help you plan your next <br></br>trip! Please review the navigation details below:</h3>
+            <Accordion id='accordion' fluid styled>
             <Accordion.Title
                 active={activeIndex === 0}
                 index={0}
@@ -48,6 +49,7 @@ class Home extends Component {
                 </p>
             </Accordion.Content>
             </Accordion>
+            
         </>
       )
     }

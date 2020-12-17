@@ -11,14 +11,7 @@ class Header extends Component {
                 <div id="flex-header-container">
                         <h1 id="logo">TravTrak</h1>
                         </div>
-                <div id="flex-header-container">
-                        <Button><Link to='/home'> Home </Link></Button>
-                        <Button><Link to='/board'> Travel Planner </Link></Button>
-                        <Button><Link to='/safety'> Is It Safe? </Link></Button>
-                        </div>
-                </div>                    
-                
-                
+                </div>                     
             </div>
         );
     }
