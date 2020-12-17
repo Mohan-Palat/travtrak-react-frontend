@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {getTravelAdvisoryDetails} from './api.js'
 import SearchCountry from './SearchCountry'
-import DropdownCountries from './DropdownCountries'
 
 class Safety extends Component {
 
