@@ -24,10 +24,8 @@ class TrekList extends Component {
         <Card.Content extra>
             <Card.Description>{trek.designation}</Card.Description>
             <Button onClick={() => this.props.handleTrekDetails(trek.id)}>Details</Button>
+            <Button onClick={() => this.props.openAndEdit(trek.id)}>Edit</Button>
             <Button icon onClick={() => this.props.deleteTrek(trek)}><Icon name="trash"/></Button>
-           <br></br>
-           <br></br>
-            <Button onClick={() => this.props.openAndEdit(trek.id)}>Additional Info</Button>
         </Card.Content>
       </Card>
     );

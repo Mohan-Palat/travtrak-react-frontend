@@ -7,7 +7,7 @@ body {
   font-family: 'Architects Daughter', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #EDC7B7;
+  /* background: #EDC7B7; */
 }
 
 body {
@@ -268,4 +268,19 @@ code {
   text-align: center;
   font-family: 'Architects Daughter', cursive;
   margin-top: 5%;
+}
+
+#welcome-back {
+  text-align: right;
+}
+
+.home-banner {
+  width: 300px;
+  height: 200px;
+}
+
+#image-flex{
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
 }

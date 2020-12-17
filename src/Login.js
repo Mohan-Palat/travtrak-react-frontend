@@ -22,7 +22,7 @@ class Login extends Component {
             >
 
 <Label>Username:</Label>
-            <Form.Input
+            <Form.Input required
                 type="text"
                 name="username"
                 value={this.props.username}
@@ -31,15 +31,15 @@ class Login extends Component {
 
 
             <Label>Password:</Label>
-            <Form.Input
-                type="text"
+            <Form.Input required
+                type="password"
                 name="password"
                 value={this.props.username}
                 onChange={this.props.handleNewUserChange}
             />
             
             <Label>Email:</Label>
-            <Form.Input
+            <Form.Input required
                 type="text"
                 name="email"
                 value={this.props.username}

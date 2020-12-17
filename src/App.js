@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header'
 import TrekContainer from './TrekContainer'
-import { Switch, Route, Router, } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import CreateTrekForm from './CreateTrekForm.js';
 import LandingPage from './LandingPage'
 import Safety from './Safety'
@@ -21,7 +21,8 @@ class App extends Component {
         email: '',
         password: ''
     },
-    currentUser: {}
+    currentUser: {},
+    isLoggedIn: ''
   }
   }
 
@@ -51,7 +52,7 @@ class App extends Component {
           email: '',
           password: '',
         },
-        currentUser: loginResponse.data.data,
+        currentUser: loginResponse.data.data, withCredentials: true, isLoggedIn: true
       });
     } catch (err) {
       console.log(err);
@@ -67,12 +68,13 @@ class App extends Component {
         process.env.REACT_APP_FLASK_API_URL + '/user/logout', this.state.currentUser.user,{
           headers: {
           'Authorization': 'Bearer ' + this.state.currentUser.token
-        }
+        }, withCredentials: true
       },
 
       );
       this.setState({
-        currentUser: {}
+        currentUser: {},
+        isLoggedIn: false
       })
     }catch (err) {
       console.log(err);
@@ -80,24 +82,23 @@ class App extends Component {
   }
 
 
-  render() {
 
-    console.log(this.state.currentUser)
+  render() {
 
     return (
 
         <Switch>
           <>
           <Header />          
+
+          {(this.state.isLoggedIn) ? <h2></h2>: <Login login={this.login} handleNewUserChange={this.handleNewUserChange}/>}
+          {(this.state.isLoggedIn) ? <h2 id='welcome-back'>Hello Traveler, Welcome Back! <br></br><Button onClick={this.logout}>Logout</Button> </h2>:<h2></h2>}
           <NavLinks />
           <Route path = '/home' component = {Home} exact />
           <Route path = '/' component = {LandingPage} exact />
           <Route path ='/board' component = {TrekContainer} exact/>
           <Route path ='/safety' component = {Safety} exact/>
           <Route path ='/add' component = {CreateTrekForm} />
-          {(this.state.currentUser !== '') ? <Login login={this.login} handleNewUserChange={this.handleNewUserChange}/>: <h2>Welcome back!</h2>}
-          <Button onClick={this.logout}>Logout</Button>
-          {/* <Login login={this.login} handleNewUserChange={this.handleNewUserChange}/> */}
         </>
       </Switch>
     );
