@@ -1,53 +1,40 @@
 import React, { Component } from 'react';
-import { Button, Form, Segment, Label, Radio, Image, Modal, Icon } from 'semantic-ui-react'
-import axios from 'axios'
+import { Button, Form, Segment} from 'semantic-ui-react'
 
 class Login extends Component {
-    constructor(props) {
-        super(props)
-
-      }
 
 
-
-    render() {console.log(this.props);
+    render() {
         return (
             <div>                <br></br>
             <Segment id='login-form'>
-            <h4>Login</h4>
-            <Form
+            <h1>Plase Log In!</h1>
+            <Form id="login-form"
             onSubmit={(e) => {
-                console.log(e);
             }}
             >
-
-<Label>Username:</Label>
+            <h4>Username</h4>
             <Form.Input required
                 type="text"
                 name="username"
                 value={this.props.username}
                 onChange={this.props.handleNewUserChange}
             />
-
-
-            <Label>Password:</Label>
+            <h4>Password:</h4>
             <Form.Input required
                 type="password"
                 name="password"
                 value={this.props.username}
                 onChange={this.props.handleNewUserChange}
             />
-            
-            <Label>Email:</Label>
+            <h4>Email:</h4>
             <Form.Input required
                 type="text"
                 name="email"
                 value={this.props.username}
                 onChange={this.props.handleNewUserChange}
             />
-
-            <br></br>
-            <br></br>
+            <br></br><br></br>
             <Button type="Submit" onClick={this.props.login}>Login</Button>
             </Form>
         </Segment>

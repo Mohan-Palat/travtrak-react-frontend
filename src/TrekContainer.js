@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TrekList from './TrekList';
-import { Card, Image, Icon, Button } from 'semantic-ui-react';
+import {Icon, Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
-import AddModal from './MoreInfoModal'
 import TrekDetail from './TrekDetail'
 import EditTrekModal from './EditTrekModal';
-import NewUserModal from './Login';
 
 class TrekContainer extends Component {
   constructor(props) {
@@ -57,9 +55,7 @@ class TrekContainer extends Component {
 
   addTreks = async (e, trek) => {
     e.preventDefault();
-
     try {
-      // The createdTrekResponse variable will store the response from the Flask API
       const createdTrekResponse = await axios({
         method: 'POST',
         url: process.env.REACT_APP_FLASK_API_URL + '/api/v1/treks/',
@@ -69,9 +65,6 @@ class TrekContainer extends Component {
         },
       });
 
-      // we are emptying all the treks that are living in state into a new array,
-      // and then adding the trek we just created to the end of it
-      // the new trek which is called parsedResponse.data
 
       this.setState({
         treks: [...this.state.trek, createdTrekResponse.data.data],
@@ -82,7 +75,6 @@ class TrekContainer extends Component {
   };
 
   deleteTrek = async (id) => {
-    console.log(id.id);
     const deleteTrekResponse = await axios.delete(
       `${process.env.REACT_APP_FLASK_API_URL}/api/v1/treks/${id.id}`
     );
@@ -151,8 +143,6 @@ closeAndEdit = async (e) => {
       this.state.trekToEdit
     );
 
-    console.log(editResponse, ' parsed edit');
-    console.log(this.state.trekToEdit.trekID);
     const newTrekArrayWithEdit = this.state.treks.map((trek) => {
       if (trek.id === editResponse.data.data.id) {
         trek = editResponse.data.data;
@@ -175,18 +165,19 @@ closeModal = () => {
 }
 
   render() {
-    console.log(this.state.trek);
       return (
         <>
-          <h1 id='center-header'>Treks</h1>
-          <Button><Link to='/add' id="link">Add New Trek</Link></Button>
-          <AddModal />
-          <br></br>
+          <h1 id='center-header'>My Treks</h1>
+          <h3 id="center">Keep track of your trips and details here! Add treks below and click details <br></br> for flight information. You can also edit your information as needed. </h3>
+          <br></br><br></br>
+          <Button icon id='add-trek-button'><Link to='/add' id="link"><Icon name='add'/></Link></Button>
+          <br></br><br></br>
           <TrekList openAndEdit={this.openAndEdit} treks={this.state.treks} deleteTrek={this.deleteTrek} handleTrekDetails={this.handleTrekDetails}/>
           <br></br>
           {(this.state.trek !== '') ? <h2 id='trek-details-1'>Trek Details</h2>: <h2></h2>}
           <TrekDetail date ={this.state.date} trek={this.state.trek} airline={this.state.airline} confirmation_code={this.state.confirmation_code}/>
           <EditTrekModal closeModal={this.closeModal} handleEditChange={this.handleEditChange} open={this.state.showEditModal} trekToEdit={this.state.trekToEdit} closeAndEdit={this.closeAndEdit}/>
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
         </>
       )
     

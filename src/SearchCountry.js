@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Dropdown, Button } from 'semantic-ui-react'
 
-
 class CountrySearch extends Component {
     constructor(props) {
         super(props);
@@ -22,9 +21,7 @@ class CountrySearch extends Component {
     searchCountry = (event) => {
         event.preventDefault();
         this.props.handleCountrySearch(this.state.searchValue);
-        console.log(event);
     }
-
 
     render() {
         //update search box to user's location when they first get to page
@@ -279,13 +276,11 @@ class CountrySearch extends Component {
             { key: 'zm', value: 'zm', flag: 'zm', text: 'Zambia' },
             { key: 'zw', value: 'zw', flag: 'zw', text: 'Zimbabwe' },
           ]
-        
+
           const handleChange = (e, data) => {
           this.setState({
             searchValue: data.value
           })
-          console.log(data.value);
-          console.log(this.state.searchValue);
           
         }
         return (

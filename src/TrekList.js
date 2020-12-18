@@ -15,10 +15,10 @@ class TrekList extends Component {
   const treks = this.props.treks.map((trek) => {
     return (
     
-      <Card key={trek.id}>
+      <Card id="trip-card" key={trek.id}>
         <Image src={trek.image_url} wrapped ui={false} />
         <Card.Content>
-          <Card.Header>{trek.trip_name}</Card.Header>
+          <Card.Header id="center">{trek.trip_name}</Card.Header>
           <Card.Description>{trek.date}</Card.Description>
         </Card.Content>
         <Card.Content extra>

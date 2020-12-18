@@ -3,7 +3,6 @@ import Header from './Header'
 import TrekContainer from './TrekContainer'
 import { Switch, Route } from 'react-router-dom';
 import CreateTrekForm from './CreateTrekForm.js';
-import LandingPage from './LandingPage'
 import Safety from './Safety'
 import Home from './Home'
 import NavLinks from './NavLinks'
@@ -25,7 +24,7 @@ class App extends Component {
     isLoggedIn: ''
   }
   }
-
+//updates current user object
   handleNewUserChange = (e) => {
     this.setState({
       newUser: {
@@ -35,7 +34,7 @@ class App extends Component {
     });
   };
 
-
+//makes login call
   login = async (e) => {
     e.preventDefault();
     try {
@@ -43,10 +42,7 @@ class App extends Component {
         process.env.REACT_APP_FLASK_API_URL  + '/user/login',
         this.state.newUser
       );
-
-      console.log(loginResponse, ' Login Response');
       this.setState({
-
         newUser: {
           username: '',
           email: '',
@@ -58,8 +54,7 @@ class App extends Component {
       console.log(err);
     }
   };
-
-
+//makes logout call
   logout = async (e) => {
     e.preventDefault();
     console.log(this.state.currentUser.token);
@@ -81,21 +76,16 @@ class App extends Component {
     }
   }
 
-
-
   render() {
 
     return (
-
         <Switch>
           <>
           <Header />          
-
           {(this.state.isLoggedIn) ? <h2></h2>: <Login login={this.login} handleNewUserChange={this.handleNewUserChange}/>}
-          {(this.state.isLoggedIn) ? <h2 id='welcome-back'>Hello Traveler, Welcome Back! <br></br><Button onClick={this.logout}>Logout</Button> </h2>:<h2></h2>}
+          {(this.state.isLoggedIn) ? <h2 id='welcome-back'>Hello Traveler! <br></br><Button onClick={this.logout}>Logout</Button> </h2>:<h2></h2>}
           <NavLinks />
           <Route path = '/home' component = {Home} exact />
-          <Route path = '/' component = {LandingPage} exact />
           <Route path ='/board' component = {TrekContainer} exact/>
           <Route path ='/safety' component = {Safety} exact/>
           <Route path ='/add' component = {CreateTrekForm} />
