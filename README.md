@@ -1,6 +1,6 @@
 # Proejct 4
 
-## TravTral 
+## TravTrak
 
 TravTrak helps you organize your travel - from planning your treks to looking back on the good times. And all of it in between! 
 
