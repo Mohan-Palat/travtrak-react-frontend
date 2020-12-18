@@ -22,3 +22,7 @@ Use TravTrak to organize your plans for an upcoming or “dream” trip, upload 
 * As a user, I should be able to search the dropdown values
 * As a user, I should be able to delete a trek
 * AS a user, I should be able to view details of each trek
+
+### Wireframes
+
+![wireframe](https://imgur.com/FVQlmS0)
