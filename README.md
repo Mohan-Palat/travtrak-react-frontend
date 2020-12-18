@@ -25,4 +25,4 @@ Use TravTrak to organize your plans for an upcoming or “dream” trip, upload 
 
 ### Wireframes
 
-![wireframe](https://imgur.com/FVQlmS0)
+![wireframe](https://i.imgur.com/FVQlmS0.jpg)
